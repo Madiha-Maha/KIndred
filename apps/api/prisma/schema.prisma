@@ -1,0 +1,102 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  MENTOR
+  LEARNER
+}
+
+enum SessionMode {
+  VIDEO
+  IN_PERSON
+}
+
+enum SessionStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  passwordHash String
+  role         Role
+  name         String
+  avatarUrl    String?
+  bio          String
+  createdAt    DateTime       @default(now())
+
+  // Relations
+  mentorProfile MentorProfile?
+  mentorSessions Session[]    @relation("MentorSessions")
+  learnerSessions Session[]   @relation("LearnerSessions")
+}
+
+model MentorProfile {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  availability   Json     // Stored as JSON array of day/time slots
+  ratePerSession Float    @default(0.0)
+
+  // Relations
+  skills         Skill[]  @relation("MentorSkills")
+  journalEntries LegacyJournalEntry[]
+}
+
+model Skill {
+  id             String         @id @default(uuid())
+  name           String         @unique
+  category       String
+
+  // Relations
+  mentors        MentorProfile[] @relation("MentorSkills")
+  sessions       Session[]
+}
+
+model Session {
+  id          String        @id @default(uuid())
+  mentorId    String
+  mentor      User          @relation("MentorSessions", fields: [mentorId], references: [id])
+  learnerId   String
+  learner     User          @relation("LearnerSessions", fields: [learnerId], references: [id])
+  skillId     String
+  skill       Skill         @relation(fields: [skillId], references: [id])
+  scheduledAt DateTime
+  mode        SessionMode   @default(VIDEO)
+  status      SessionStatus @default(PENDING)
+  notes       String?
+
+  // Relations
+  review       Review?
+  journalEntry LegacyJournalEntry?
+  createdAt    DateTime      @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  sessionId String   @unique
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+}
+
+model LegacyJournalEntry {
+  id          String         @id @default(uuid())
+  mentorId    String
+  mentor      MentorProfile  @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  sessionId   String         @unique
+  session     Session        @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  summaryText String
+  mediaUrl    String?
+  createdAt   DateTime       @default(now())
+}

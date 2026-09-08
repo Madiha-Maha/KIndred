@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terracotta: #C1633D;
+  --color-terracotta-dark: #A8502E;
+  --color-terracotta-light: #E07D58;
+  --color-cream: #F7F1E6;
+  --color-cream-card: #FAF6EF;
+  --color-cream-dark: #EDE3D1;
+  --color-forest: #2F4131;
+  --color-forest-dark: #1E2B20;
+  --color-forest-light: #415A44;
+  --color-gold: #C9A45C;
+  --color-gold-light: #DFBE77;
+  --color-gold-dark: #AA853D;
+
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Caveat', cursive, sans-serif;
+}
+
+:root {
+  --app-bg: #F7F1E6;
+  --app-text: #2F4131;
+  --app-card: #FAF6EF;
+  --app-border: #E5D9C5;
+  --font-scale: 1rem;
+}
+
+/* High Contrast mode */
+[data-contrast="high"] {
+  --app-bg: #FFFFFF;
+  --app-text: #111B12;
+  --app-card: #FFFFFF;
+  --app-border: #111B12;
+  --color-terracotta: #A53E1B;
+  --color-forest: #132415;
+  --color-gold: #8C6819;
+}
+
+/* Font size modes */
+[data-font-size="large"] {
+  font-size: 112.5%; /* 18px baseline */
+}
+
+[data-font-size="extra-large"] {
+  font-size: 125%; /* 20px baseline */
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 250ms ease-out, color 250ms ease-out;
+}
+
+h1, h2, h3, .font-serif-heading {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+
+/* Postcard texture & styling */
+.postcard-texture {
+  background-color: #FDFBF7;
+  background-image: radial-gradient(#E8DCC4 0.75px, transparent 0.75px), radial-gradient(#E8DCC4 0.75px, #FDFBF7 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Wooden shelf effect */
+.shelf-wood {
+  background: linear-gradient(180deg, #9C6644 0%, #7F4F24 50%, #582F0E 100%);
+  box-shadow: 0 8px 16px -4px rgba(47, 65, 49, 0.25), inset 0 2px 2px rgba(255, 255, 255, 0.15);
+}
+
+.shelf-wood-groove {
+  background: linear-gradient(180deg, #462208 0%, #683814 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F1E6;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A45C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C1633D;
+}
+

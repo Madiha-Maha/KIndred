@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-terracotta: #C1633D;
+  --color-cream: #F7F1E6;
+  --color-cream-card: #FAF6EF;
+  --color-forest: #2F4131;
+  --color-gold: #C9A45C;
+}
+
+[data-contrast="high"] {
+  --color-cream: #FFFFFF;
+  --color-forest: #111B12;
+  --color-terracotta: #A53E1B;
+}
+
+[data-font-size="large"] {
+  font-size: 112.5%;
+}
+
+[data-font-size="extra-large"] {
+  font-size: 125%;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-forest);
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  min-height: 100vh;
+  margin: 0;
+}
+
+h1, h2, h3, .font-fraunces {
+  font-family: var(--font-fraunces, 'Fraunces', serif);
+}
