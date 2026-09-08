@@ -3,8 +3,8 @@
 Kindred connects elder masters and wisdom keepers with modern apprentices and younger learners for 1-on-1 slow-craft mentoring, life philosophy transmission, and intergenerational connection.
 
 This repository is structured as a **production-ready monorepo** with two independently deployable applications:
-- **`apps/web`**: Next.js 14 (App Router, TypeScript, Tailwind CSS, Zustand) deployed on **Vercel**
-- **`apps/api`**: Node.js + Express + TypeScript + Prisma ORM (PostgreSQL) + Socket.IO deployed on **Railway**
+- **`apps/web`**: Next.js 14 (App Router, TypeScript, Tailwind CSS, Zustand) frontend
+- **`apps/api`**: Node.js + Express + TypeScript + Prisma ORM (PostgreSQL) + Socket.IO backend
 - **`packages/shared`**: Shared TypeScript types, interfaces, and Zod schemas used by both applications
 
 ---

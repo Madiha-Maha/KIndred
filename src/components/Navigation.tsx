@@ -5,7 +5,6 @@ import {
   BookOpen,
   Calendar,
   Sparkles,
-  Layers,
   Eye,
   Type,
   UserCheck,
@@ -167,17 +166,6 @@ export const Navigation: React.FC = () => {
                 </button>
               </div>
             </div>
-
-            {/* Monorepo Architecture & Railway Deployment Drawer Button */}
-            <button
-              onClick={() => store.toggleMonorepoInspector(true)}
-              id="monorepo-inspector-btn"
-              className="px-3 py-2 rounded-full border border-[#2F4131] text-[#2F4131] bg-[#FAF6EF] hover:bg-[#EDE3D1] text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition"
-              title="Inspect Monorepo Files & Railway/Vercel Deploy Specs"
-            >
-              <Layers className="w-3.5 h-3.5 text-[#C1633D]" />
-              <span className="hidden sm:inline">Monorepo & Deploy</span>
-            </button>
 
             {/* Role Switcher Pill */}
             <button

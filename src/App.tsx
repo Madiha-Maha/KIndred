@@ -9,8 +9,7 @@ import { SessionRoomView } from './components/SessionRoomView';
 import { LegacyJournalView } from './components/LegacyJournalView';
 import { DashboardView } from './components/DashboardView';
 import { OnboardingView } from './components/OnboardingView';
-import { MonorepoDeployModal } from './components/MonorepoDeployModal';
-import { Sparkles, Heart, Compass, BookOpen, Layers } from 'lucide-react';
+import { Sparkles, Heart, Compass, BookOpen } from 'lucide-react';
 
 export default function App() {
   const store = useKindredStore();
@@ -74,22 +73,13 @@ export default function App() {
             >
               Join as Mentor
             </button>
-            <button
-              onClick={() => store.toggleMonorepoInspector(true)}
-              className="hover:text-[#C1633D] transition flex items-center gap-1 text-[#C1633D] font-bold"
-            >
-              <Layers className="w-3.5 h-3.5" /> Deploy Guide
-            </button>
           </div>
 
           <div className="text-[11px] text-[#415A44] text-center md:text-right">
-            Deployed on Vercel & Railway • PostgreSQL via Prisma
+            PostgreSQL via Prisma
           </div>
         </div>
       </footer>
-
-      {/* Deployment & Monorepo Code Inspector Modal */}
-      <MonorepoDeployModal />
     </div>
   );
 }
